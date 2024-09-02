@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 using namespace std;
-class Movie
+class Mainteinance
 {
 private:
 	char Name[100];

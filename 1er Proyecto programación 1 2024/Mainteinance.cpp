@@ -1,31 +1,31 @@
-#include "Movie.h"
+#include "Mainteinance.h"
 
-const char* Movie::getName()
+const char* Mainteinance::getName()
 {
 	return Name;
 }
 
-int Movie::getYear()
+int Mainteinance::getYear()
 {
 	return Year;
 }
 
-int Movie::getDuration()
+int Mainteinance::getDuration()
 {
 	return DurationMins;
 }
 
-const char* Movie::getCountry()
+const char* Mainteinance::getCountry()
 {
 	return Country;
 }
 
-const char* Movie::getReview()
+const char* Mainteinance::getReview()
 {
 	return Review;
 }
 
-void Movie::SaveMovie()
+void Mainteinance::SaveMovie()
 {
 	char MovieName[100];
 	int MovieYear = 0;
@@ -48,7 +48,7 @@ void Movie::SaveMovie()
 
 }
 
-void Movie::SetMovie(char MovieName[100], int MovieYear, int MovieDurationMins, char MovieCountry[50], char MovieReview[500])
+void Mainteinance::SetMovie(char MovieName[100], int MovieYear, int MovieDurationMins, char MovieCountry[50], char MovieReview[500])
 {
 	for (int i = 0; i < 100; i++) {
 		Name[i] = MovieName[i];
@@ -63,7 +63,7 @@ void Movie::SetMovie(char MovieName[100], int MovieYear, int MovieDurationMins, 
 	Year = MovieYear;
 }
 
-void Movie::ShowMovie()
+void Mainteinance::ShowMovie()
 {
 	
 	printf(" Nombre: %s\n", Name);

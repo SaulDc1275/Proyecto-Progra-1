@@ -1,19 +1,19 @@
 #pragma once
 #include <iostream>
 #include <stdio.h>
-#include "Movie.h"
-class Options : public Movie
+#include "Mainteinance.h"
+class Options : public Mainteinance
 {
 
 private:
-	Movie* Movies;
+	Mainteinance* Movies;
 	int MoviesQuantity;
 	;
 public:
 	Options();
 	~Options();
 	int getMoviesQuantity();
-	void AddMovie(const Movie& movie);
+	void AddMovie(const Mainteinance& movie, int &nMoviesQuantity);
 	int MainMenu(int &option, Options &Choser);
 	int FileOption(int &option, Options &Choser);
 	int MaintenanceOption(int &option, Options &Choser);

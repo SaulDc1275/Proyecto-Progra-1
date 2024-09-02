@@ -1,5 +1,5 @@
 #include "Options.h"
-#include "Movie.h"
+
 Options::Options() : Movies(nullptr), MoviesQuantity(0) {}
 Options::~Options()
 {
@@ -9,9 +9,9 @@ int Options::getMoviesQuantity()
 {
 	return MoviesQuantity;
 }
-void Options::AddMovie(const Movie& movie)
+void Options::AddMovie(const Mainteinance& movie, int &nMoviesQuantity)
 {
-	Movie* newMovies = new Movie[MoviesQuantity + 1];
+	Mainteinance* newMovies = new Mainteinance[MoviesQuantity + 1];
 	for (int i = 0; i < MoviesQuantity; i++) {
 		newMovies[i] = Movies[i];
 	}
@@ -112,37 +112,54 @@ int Options::MaintenanceOption(int &option, Options &Choser)
 		printf(" Ha entrado al menu de Mantenimiento\n");
 		printf(" 1. Peliculas\n 2. Salas\n 3.Horarios\n 4.Volver al menu principal\n Digite su opcion: ");
 		scanf_s("%i", &option);
-		switch (option)
-		{
-		case 1:
-		{
-			printf(" Se ha digitado la opcion para guardar una pelicula\n\n");
-			Movie newMovie;
-			newMovie.SaveMovie();
-			AddMovie(newMovie);
 
 
-			printf("\n\n Su pelicula se ha guardado correctamente, aqui se muestra la pelicula guardada: \n\n");
-			if (getMoviesQuantity() > 0) {
-				Movies[getMoviesQuantity() - 1].ShowMovie();
+		if (option < 5 && option >0) {
+			switch (option)
+			{
+			case 1:
+			{
+				printf(" Se ha digitado la opcion para guardar una pelicula\n\n");
+				Mainteinance newMovie;
+				newMovie.SaveMovie();
+				AddMovie(newMovie, MoviesQuantity);
+
+
+				printf("\n\n Su pelicula #%i se ha guardado correctamente, aqui se muestra la pelicula guardada: \n\n", MoviesQuantity);
+				if (getMoviesQuantity() > 0) {
+					Movies[getMoviesQuantity() - 1].ShowMovie();
+				}
+
+				system("PAUSE");
+
+				system("cls");
+
 			}
-			system("PAUSE");
-			BackToMainMenu = true;
-			system("cls");
-		}
 			break;
-		case 2:
+			case 2:
+				printf(" Ha digitado la opcion para agregar una sala \n");
+				if (MoviesQuantity == 0) {
+					system("cls");
+					printf(" No hay ninguna pelicula para agregar a las salas, debe crear una sala primero\n ");
+					break;
+				}
+				break;
+			case 3:
+				printf(" Ha digitado la opcion para asignar los horarios\n");
+				break;
+			case 4:
+				system("cls");
+				BackToMainMenu = true;
+				printf(" Ha vuelto al menu principal\n \n");
 			
-			break;
-		case 3:
-			printf(" Se ha digitado la opcion 3.\n");
-			break;
-		case 4: 
-			system("cls");
+			
+			}
+		}
+		else {
 			BackToMainMenu = true;
-			printf(" Se ha digitado la opcion 4.\n Volviendo al menu principal...\n \n");
-		default:
-			break;
+			system("cls");
+			printf(" La opcion que digito es incorrecta \n");
+
 		}
 	}
 	return 0;

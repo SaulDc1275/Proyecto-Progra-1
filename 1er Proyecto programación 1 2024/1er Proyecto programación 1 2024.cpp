@@ -1,11 +1,11 @@
 #include <iostream>
-#include "Options.h"
+#include "Option.h"
 
 int main()
 {
 	int option = 0;
 	
-	Options Chooser;
+	Option Chooser;
 	
 	Chooser.MainMenu(option, Chooser);
 	

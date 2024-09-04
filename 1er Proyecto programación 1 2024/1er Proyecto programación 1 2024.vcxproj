@@ -129,11 +129,13 @@
   <ItemGroup>
     <ClCompile Include="1er Proyecto programación 1 2024.cpp" />
     <ClCompile Include="Mainteinance.cpp" />
-    <ClCompile Include="Options.cpp" />
+    <ClCompile Include="Option.cpp" />
+    <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mainteinance.h" />
-    <ClInclude Include="Options.h" />
+    <ClInclude Include="Option.h" />
+    <ClInclude Include="Room.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

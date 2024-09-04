@@ -1,28 +1,27 @@
 #include "Mainteinance.h"
 
+Mainteinance::Mainteinance()
+{
+	Rooms = nullptr;
+}
+Mainteinance::~Mainteinance() {
+	delete[] Rooms;
+}
+
+void CreateRooms() {
+
+}
+
 const char* Mainteinance::getName()
 {
 	return Name;
 }
 
-int Mainteinance::getYear()
-{
-	return Year;
-}
+
 
 int Mainteinance::getDuration()
 {
 	return DurationMins;
-}
-
-const char* Mainteinance::getCountry()
-{
-	return Country;
-}
-
-const char* Mainteinance::getReview()
-{
-	return Review;
 }
 
 void Mainteinance::SaveMovie()
@@ -72,5 +71,20 @@ void Mainteinance::ShowMovie()
 	printf(" Pais: %s\n", Country);
 	printf(" Resenia: %s\n", Review); 
 }
+
+void Mainteinance::CreateRooms()
+{
+	
+	printf(" Cuantas salas hay en el cine?\n Digite su respuesta: ");
+	scanf_s("%i", &RoomsQuantity);
+	printf("\n");
+	ResetTotalRooms();
+	Rooms = new Room[RoomsQuantity];
+	for (int i = 0; i < RoomsQuantity; i++) {
+		Rooms[i].ShowRooms();
+	}
+
+}
+
 
 

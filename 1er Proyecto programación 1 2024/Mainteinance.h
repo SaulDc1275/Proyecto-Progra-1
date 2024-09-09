@@ -18,9 +18,9 @@ public:
 	void DeleteMovie();
 	int getMoviesQuantity();
 	void CreateRooms();
-	Movie* getMovie(int i);
-	Movie* ShowAllMovies();
-	
+	void getMovie(int i);
+	void ShowAllMovies();
+	void AssingRoomToMovie();
 	
 	
 };

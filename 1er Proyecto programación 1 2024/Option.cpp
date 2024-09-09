@@ -153,11 +153,13 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 			case 2:
 				system("cls");
 				printf(" Ha digitado la opcion para agregar una sala \n");
-				if (getMoviesQuantity() == 0) {
+				if (getMoviesQuantity() != 0) {
 					if (!roomsCreated){
 						CreateRooms();
 						roomsCreated = true;
 					}
+					system("PAUSE");
+					AssingRoomToMovie();
 					system("PAUSE");
 					system("cls");
 				}

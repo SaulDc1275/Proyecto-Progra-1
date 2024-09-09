@@ -13,8 +13,9 @@ private:
 public:
 	const char* getName();
 	int getDuration();
-	void SetMovie(char MovieName[300], int MovieYear, int MovieDurationMins, char MovieCountry[200], char MovieReview[500]);
+	void SetMovie(char MovieName[300], int MovieYear, int MovieDurationMins, char MovieCountry[200], char MovieReview[500], int AssignedRoom);
 	void SaveMovie();
 	void ShowMovie();
+	void setAssignedRoom(int AssignedRoom);
 };
 

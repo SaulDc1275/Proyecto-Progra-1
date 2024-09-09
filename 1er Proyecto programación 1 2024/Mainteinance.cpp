@@ -56,21 +56,52 @@ int Mainteinance::getMoviesQuantity()
 	return MoviesQuantity;
 }
 
-Movie* Mainteinance::getMovie(int i) {
+void Mainteinance::getMovie(int i) {
 
 		Movies[i].ShowMovie();
-		return nullptr;
+		
 }
 
-Movie* Mainteinance::ShowAllMovies()
+void Mainteinance::ShowAllMovies()
 {
 	printf(" A continuacion estas son todas las peliculas que se han ingresado al sistema:\n");
 	for (int i = 0; i < MoviesQuantity; i++) {
 		printf("\n Pelicula #%i\n", i + 1);
-		Movies[i].ShowMovie();
+		getMovie(i);
 		
 	}
-	return nullptr;
+	
+}
+
+void Mainteinance::AssingRoomToMovie()
+{
+	int RoomNumber = 0;
+	int MovieNumber = 0;
+	printf(" A que sala desea agregar una pelicula?: ");
+	scanf_s("%i", &RoomNumber);
+	if (RoomNumber > 0 && RoomNumber <= RoomsQuantity) {
+		printf(" Que pelicula desea agregar a la sala #%i? \n\n", RoomNumber);
+		for (int i = 0; i < MoviesQuantity; i++) {
+			printf(" Pelicula #%i \n", i + 1);
+			getMovie(i);
+			printf("\n\n");
+		}
+		printf(" Digite su opcion: ");
+		scanf_s("%i", &MovieNumber);
+		if (MovieNumber > 0 && MovieNumber <= MoviesQuantity) {
+			Movies[MovieNumber - 1].setAssignedRoom(RoomNumber);
+			system("PAUSE");
+			system("cls");
+			printf(" La pelicula #%i ha sido asignada exitosamente a la sala #%i \n", MovieNumber, RoomNumber);
+			getMovie(MovieNumber - 1);
+		}
+		else {
+			printf(" El numero de pelicula que digito no existe\n");
+		}
+	}
+	else {
+		printf(" El numero de sala que digito no existe\n");
+	}
 }
 
 

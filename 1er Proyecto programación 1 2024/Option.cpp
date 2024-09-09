@@ -1,29 +1,15 @@
 #include "Option.h"
 
 Option::Option() {
-	Movies = nullptr;
-	MoviesQuantity = 0;
+	
 	roomsCreated = false;
 }
 Option::~Option()
 {
-	delete[]Movies;
+	
 }
-int Option::getMoviesQuantity()
-{
-	return MoviesQuantity;
-}
-void Option::AddMovie(const Mainteinance& movie, int &nMoviesQuantity)
-{
-	Mainteinance* newMovies = new Mainteinance[MoviesQuantity + 1];
-	for (int i = 0; i < MoviesQuantity; i++) {
-		newMovies[i] = Movies[i];
-	}
-	newMovies[MoviesQuantity] = movie;
-	delete[] Movies;
-	Movies = newMovies;
-	MoviesQuantity++;
-}
+
+
 int Option::MainMenu(int &option, Option &Chooser)
 {
 	option = 0;
@@ -123,25 +109,52 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 			{
 			case 1:
 			{
-				printf(" Se ha digitado la opcion para guardar una pelicula\n\n");
-				Mainteinance newMovie;
-				newMovie.SaveMovie();
-				AddMovie(newMovie, MoviesQuantity);
+				int moviesOption = 0;
+				printf(" Si desea guardar una pelicula digite \"1\", si desea eliminar una pelicula digite \"2\"\n");
+				printf(" Digite su opcion: ");
+				scanf_s("%i", &moviesOption);
+				if (moviesOption == 1) {
+					system("cls");
+					printf(" Se ha digitado la opcion para guardar una pelicula\n\n");
+					Movie newMovie;
+					newMovie.SaveMovie();
+					AddMovie(newMovie);
 
 
-				printf("\n\n Su pelicula #%i se ha guardado correctamente, aqui se muestra la pelicula guardada: \n\n", MoviesQuantity);
-				if (getMoviesQuantity() > 0) {
-					Movies[getMoviesQuantity() - 1].ShowMovie();
+					printf("\n\n Su pelicula #%i se ha guardado correctamente, aqui se muestra la pelicula guardada: \n\n", getMoviesQuantity());
+					if (getMoviesQuantity() > 0) {
+						getMovie(getMoviesQuantity() - 1);
+					}
+					system("PAUSE");
+					system("cls");
+					ShowAllMovies();
+					system("PAUSE");
+					system("cls");
 				}
-				system("PAUSE");
-				system("cls");
+				if (moviesOption == 2) {
+					if (getMoviesQuantity() > 0) {
+						system("cls");
+						printf(" Se ha digitado la opcion para eliminar una pelicula\n\n");
+						ShowAllMovies();
+						DeleteMovie();
+						system("PAUSE");
+						system("cls");
+						ShowAllMovies();
+					}
+					else {
+						printf(" No hay ninguna pelicula para eliminar\n ");
+					}
+					system("PAUSE");
+					system("cls");
+				}
+				
 			}
 			break;
 			case 2:
+				system("cls");
 				printf(" Ha digitado la opcion para agregar una sala \n");
-				if (MoviesQuantity != 0) {
+				if (getMoviesQuantity() == 0) {
 					if (!roomsCreated){
-						printf(" *ESTA OPCION ES DE UN SOLO USO*\n");
 						CreateRooms();
 						roomsCreated = true;
 					}
@@ -149,8 +162,10 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 					system("cls");
 				}
 				else {
-					system("cls");
+					
 					printf(" No hay ninguna pelicula para agregar a las salas, debe crear una pelicula primero\n ");
+					system("PAUSE");
+					system("cls");
 					break;
 				}
 

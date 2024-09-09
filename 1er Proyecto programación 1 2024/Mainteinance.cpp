@@ -3,82 +3,85 @@
 Mainteinance::Mainteinance()
 {
 	Rooms = nullptr;
+	Movies = nullptr;
 }
 Mainteinance::~Mainteinance() {
 	delete[] Rooms;
-}
-
-void CreateRooms() {
-
-}
-
-const char* Mainteinance::getName()
-{
-	return Name;
+	delete[] Movies;
 }
 
 
 
-int Mainteinance::getDuration()
-{
-	return DurationMins;
-}
-
-void Mainteinance::SaveMovie()
-{
-	char MovieName[100];
-	int MovieYear = 0;
-	int MovieDurationMins = 0;
-	char MovieCountry[50];
-	char MovieReview[500];
-
-	printf(" Ingrese el nombre de la pelicula: ");
-	scanf_s(" %[^\n]", MovieName, (unsigned)_countof(MovieName));
-	printf(" Ingrese el anio de publicacion de la pelicula: ");
-	scanf_s("%i", &MovieYear);
-	printf(" Ingrese la duracion en minutos de la pelicula: ");
-	scanf_s("%i", &MovieDurationMins);
-	printf(" Ingrese el pais de origen de la pelicula: ");
-	scanf_s(" %[^\n]", MovieCountry, (unsigned)_countof(MovieCountry));
-	printf(" Ingrese una resenia de la pelicula : ");
-	scanf_s(" %[^\n]", MovieReview, (unsigned)_countof(MovieReview));
-
-	SetMovie(MovieName,MovieYear,MovieDurationMins, MovieCountry, MovieReview);
-
-}
-
-void Mainteinance::SetMovie(char MovieName[100], int MovieYear, int MovieDurationMins, char MovieCountry[50], char MovieReview[500])
-{
-	for (int i = 0; i < 100; i++) {
-		Name[i] = MovieName[i];
+void Mainteinance::AddMovie(const Movie& movie) {
+	int currentQuantity = getMoviesQuantity();
+	Movie* newMovies = new Movie[currentQuantity + 1];
+	for (int i = 0; i < currentQuantity; i++) {
+		newMovies[i] = Movies[i];
 	}
-	for (int i = 0; i < 50; i++) {
-		Country[i] = MovieCountry[i];
-	}
-	for (int i = 0; i < 500; i++) {
-		Review[i] = MovieReview[i];
-	}
-	DurationMins = MovieDurationMins;
-	Year = MovieYear;
+	newMovies[currentQuantity] = movie;
+	delete[] Movies;
+	Movies = newMovies;
+	MoviesQuantity++;
 }
 
-void Mainteinance::ShowMovie()
-{
+void Mainteinance::DeleteMovie() {
+	int movieToEliminate;
+	printf("\n Que numero de pelicula desea eliminar?: ");
+	scanf_s("%i", &movieToEliminate);
+	if (movieToEliminate > 0 || movieToEliminate <= getMoviesQuantity()) {
+		Movie* newMovies = new Movie[getMoviesQuantity() - 1];
+		int j = 0;
+		for (int i = 0; i < getMoviesQuantity(); i++) {
+			if (i != movieToEliminate - 1) {
+				newMovies[j] = Movies[i];
+				j++;
+			}
+		}
+
+		delete[] Movies;
+		Movies = newMovies;
+		MoviesQuantity--;
+		printf(" La pelicula #%i se ha borrado exitosamente.\n", movieToEliminate);
+	}
+	else {
+		printf(" El numero de pelicula que se ingreso es invalido\n");
+	}
 	
-	printf(" Nombre: %s\n", Name);
-	printf(" Anio: %d\n", Year);
-	printf(" Duracion: %d minutos\n", DurationMins);
-	printf(" Pais: %s\n", Country);
-	printf(" Resenia: %s\n", Review); 
+	
 }
+
+
+int Mainteinance::getMoviesQuantity()
+{
+	return MoviesQuantity;
+}
+
+Movie* Mainteinance::getMovie(int i) {
+
+		Movies[i].ShowMovie();
+		return nullptr;
+}
+
+Movie* Mainteinance::ShowAllMovies()
+{
+	printf(" A continuacion estas son todas las peliculas que se han ingresado al sistema:\n");
+	for (int i = 0; i < MoviesQuantity; i++) {
+		printf("\n Pelicula #%i\n", i + 1);
+		Movies[i].ShowMovie();
+		
+	}
+	return nullptr;
+}
+
+
 
 void Mainteinance::CreateRooms()
 {
 	
-	printf(" Cuantas salas hay en el cine?\n Digite su respuesta: ");
+	printf(" Cuantas salas hay en el cine?\n ESTA RESPUESTA SE INGRESA UNA SOLA VEZ, NO SE PODRA CAMBIAR LA CANTIDAD DE SALAS!\n Digite su respuesta: ");
 	scanf_s("%i", &RoomsQuantity);
 	printf("\n");
-	ResetTotalRooms();
+	
 	Rooms = new Room[RoomsQuantity];
 	for (int i = 0; i < RoomsQuantity; i++) {
 		Rooms[i].ShowRooms();

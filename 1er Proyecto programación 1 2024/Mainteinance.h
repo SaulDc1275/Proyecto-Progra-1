@@ -10,18 +10,14 @@ protected:
 	int MoviesQuantity;
 	Room* Rooms;
 	int RoomsQuantity;
-
 public:
 	Mainteinance();
 	~Mainteinance();
 	void AddMovie(const Movie& movie);
-	void DeleteMovie();
 	int getMoviesQuantity();
 	void CreateRooms();
 	void getMovie(int i);
 	void ShowAllMovies();
 	void AssingRoomToMovie();
-	
-	
 };
 

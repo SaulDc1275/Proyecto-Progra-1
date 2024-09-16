@@ -57,12 +57,12 @@ void Movie::ShowMovie()
 	printf(" Duracion: %d minutos\n", DurationMins);
 	printf(" Pais: %s\n", Country);
 	printf(" Resenia: %s\n", Review);
-	if (AssignedRoom != 0) {
+	if (AssignedRoom > 0) {
 		printf(" Sala asignada: %i\n", AssignedRoom);
 	}
 }
 
-void Movie::setAssignedRoom(int AssignedRoom) 
+void Movie::setAssignedRoom(int nAssignedRoom) 
 {
-	this->AssignedRoom = AssignedRoom;
+	AssignedRoom = nAssignedRoom;
 }

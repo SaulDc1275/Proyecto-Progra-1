@@ -109,18 +109,11 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 			{
 			case 1:
 			{
-				int moviesOption = 0;
-				printf(" Si desea guardar una pelicula digite \"1\", si desea eliminar una pelicula digite \"2\"\n");
-				printf(" Digite su opcion: ");
-				scanf_s("%i", &moviesOption);
-				if (moviesOption == 1) {
 					system("cls");
 					printf(" Se ha digitado la opcion para guardar una pelicula\n\n");
 					Movie newMovie;
 					newMovie.SaveMovie();
 					AddMovie(newMovie);
-
-
 					printf("\n\n Su pelicula #%i se ha guardado correctamente, aqui se muestra la pelicula guardada: \n\n", getMoviesQuantity());
 					if (getMoviesQuantity() > 0) {
 						getMovie(getMoviesQuantity() - 1);
@@ -130,24 +123,6 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 					ShowAllMovies();
 					system("PAUSE");
 					system("cls");
-				}
-				if (moviesOption == 2) {
-					if (getMoviesQuantity() > 0) {
-						system("cls");
-						printf(" Se ha digitado la opcion para eliminar una pelicula\n\n");
-						ShowAllMovies();
-						DeleteMovie();
-						system("PAUSE");
-						system("cls");
-						ShowAllMovies();
-					}
-					else {
-						printf(" No hay ninguna pelicula para eliminar\n ");
-					}
-					system("PAUSE");
-					system("cls");
-				}
-				
 			}
 			break;
 			case 2:

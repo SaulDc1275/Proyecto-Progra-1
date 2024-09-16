@@ -10,8 +10,6 @@ Mainteinance::~Mainteinance() {
 	delete[] Movies;
 }
 
-
-
 void Mainteinance::AddMovie(const Movie& movie) {
 	int currentQuantity = getMoviesQuantity();
 	Movie* newMovies = new Movie[currentQuantity + 1];
@@ -23,33 +21,6 @@ void Mainteinance::AddMovie(const Movie& movie) {
 	Movies = newMovies;
 	MoviesQuantity++;
 }
-
-void Mainteinance::DeleteMovie() {
-	int movieToEliminate;
-	printf("\n Que numero de pelicula desea eliminar?: ");
-	scanf_s("%i", &movieToEliminate);
-	if (movieToEliminate > 0 || movieToEliminate <= getMoviesQuantity()) {
-		Movie* newMovies = new Movie[getMoviesQuantity() - 1];
-		int j = 0;
-		for (int i = 0; i < getMoviesQuantity(); i++) {
-			if (i != movieToEliminate - 1) {
-				newMovies[j] = Movies[i];
-				j++;
-			}
-		}
-
-		delete[] Movies;
-		Movies = newMovies;
-		MoviesQuantity--;
-		printf(" La pelicula #%i se ha borrado exitosamente.\n", movieToEliminate);
-	}
-	else {
-		printf(" El numero de pelicula que se ingreso es invalido\n");
-	}
-	
-	
-}
-
 
 int Mainteinance::getMoviesQuantity()
 {
@@ -104,8 +75,6 @@ void Mainteinance::AssingRoomToMovie()
 	}
 }
 
-
-
 void Mainteinance::CreateRooms()
 {
 	
@@ -119,6 +88,3 @@ void Mainteinance::CreateRooms()
 	}
 
 }
-
-
-

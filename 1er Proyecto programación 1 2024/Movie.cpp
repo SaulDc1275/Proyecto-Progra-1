@@ -1,10 +1,9 @@
 #include "Movie.h"
+
 const char* Movie::getName()
 {
 	return Name;
 }
-
-
 
 int Movie::getDuration()
 {
@@ -46,12 +45,10 @@ void Movie::SaveMovie()
 	scanf_s(" %[^\n]", MovieReview, (unsigned)_countof(MovieReview));
 
 	SetMovie(MovieName, MovieYear, MovieDurationMins, MovieCountry, MovieReview,MovieAssignedRoom);
-
 }
 
 void Movie::ShowMovie()
 {
-
 	printf(" Nombre: %s\n", Name);
 	printf(" Anio: %d\n", Year);
 	printf(" Duracion: %d minutos\n", DurationMins);
@@ -60,9 +57,14 @@ void Movie::ShowMovie()
 	if (AssignedRoom > 0) {
 		printf(" Sala asignada: %i\n", AssignedRoom);
 	}
+	MovieSchedule.ShowSchedule();
 }
 
 void Movie::setAssignedRoom(int nAssignedRoom) 
 {
 	AssignedRoom = nAssignedRoom;
+}
+
+void Movie::AssignMovieSchedule(int day, int month, int year, int hour, int minute) {
+	MovieSchedule.AssignSchedule(day, month, year, hour, minute);
 }

@@ -9,7 +9,7 @@ class Option : public Mainteinance
 private:
 	
 	bool roomsCreated;
-	;
+	
 public:
 	Option();
 	~Option();
@@ -18,6 +18,6 @@ public:
 	int MaintenanceOption(int &option, Option &Choser);
 	void ReserveOption(int option, Option Choser);
 	void BuyOption(int option, Option Choser);
-	;
+	
 };
 

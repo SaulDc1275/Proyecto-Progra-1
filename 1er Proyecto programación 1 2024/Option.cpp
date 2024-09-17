@@ -100,7 +100,7 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 		option = 0;
 		printf(" \n");
 		printf(" Ha entrado al menu de Mantenimiento\n");
-		printf(" 1. Peliculas\n 2. Salas\n 3.Horarios\n 4.Volver al menu principal\n Digite su opcion: ");
+		printf(" 1.Peliculas\n 2.Salas\n 3.Horarios\n 4.Volver al menu principal\n Digite su opcion: ");
 		scanf_s("%i", &option);
 
 
@@ -139,7 +139,6 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 					system("cls");
 				}
 				else {
-					
 					printf(" No hay ninguna pelicula para agregar a las salas, debe crear una pelicula primero\n ");
 					system("PAUSE");
 					system("cls");
@@ -148,17 +147,24 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 
 				break;
 			case 3:
-				printf(" Ha digitado la opcion para asignar los horarios\n");
-				printf(" Esta opcion esta fuera de servicio\n");
-				system("PAUSE");
 				system("cls");
+				printf(" Ha digitado la opcion para asignar los horarios\n");
+				if (getMoviesQuantity() != 0) {
+					AssignSchedule();
+					system("PAUSE");
+					system("cls");
+				}
+				else {
+					printf(" No hay ninguna pelicula para asignarle un horario, debe crear una pelicula primero\n ");
+					system("PAUSE");
+					system("cls");
+					break;
+				}
 				break;
 			case 4:
 				system("cls");
 				BackToMainMenu = true;
 				printf(" Ha vuelto al menu principal\n \n");
-			
-			
 			}
 		}
 		else {

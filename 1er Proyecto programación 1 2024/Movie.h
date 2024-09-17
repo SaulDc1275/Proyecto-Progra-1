@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Schedule.h"
 using namespace std;
 class Movie
 {
@@ -10,6 +11,7 @@ private:
 	char Country[200];
 	char Review[500];
 	int AssignedRoom;
+	Schedule MovieSchedule;
 public:
 	const char* getName();
 	int getDuration();
@@ -17,5 +19,6 @@ public:
 	void SaveMovie();
 	void ShowMovie();
 	void setAssignedRoom(int nAssignedRoom);
+	void AssignMovieSchedule(int day, int month, int year, int hour, int minute);
 };
 

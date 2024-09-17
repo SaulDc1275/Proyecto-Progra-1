@@ -132,6 +132,7 @@
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="Option.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="Seat.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="Movie.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="Schedule.h" />
     <ClInclude Include="Seat.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

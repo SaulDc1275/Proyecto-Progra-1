@@ -19,5 +19,6 @@ public:
 	void getMovie(int i);
 	void ShowAllMovies();
 	void AssingRoomToMovie();
+	void AssignSchedule();
 };
 

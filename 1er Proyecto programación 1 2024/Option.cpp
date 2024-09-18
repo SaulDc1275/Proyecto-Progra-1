@@ -3,6 +3,7 @@
 Option::Option() {
 	
 	roomsCreated = false;
+	reservation = false;
 }
 Option::~Option()
 {
@@ -179,18 +180,32 @@ int Option::MaintenanceOption(int &option, Option &Choser)
 
 void Option::ReserveOption(int option, Option Choser)
 {
-	printf(" \n");
-	printf(" Se ha digitado la opcion 3.\n");
-	printf(" Esta opcion esta fuera de servicio\n");
+	if (getMoviesReadyToSellQuantity() > 0) {
+		system("cls");
+		printf(" \n");
+		printf(" Se ha digitado la opcion para hacer una reservacion.\n");
+		MakeAReservation();
+		reservation = true;
+	}
+	else {
+		printf(" No hay ninguna pelicula disponible para su reservacion \n ");
+		
+	}
+
 	system("PAUSE");
 	system("cls");
 }
 
 void Option::BuyOption(int option, Option Choser)
 {
-	printf(" \n");
-	printf(" Se ha digitado la opcion 4.\n");
-	printf(" Esta opcion esta fuera de servicio\n");
+	if (reservation == true) {
+		printf(" \n");
+		printf(" Se ha digitado la opcion para la compra de un ticket.\n");
+		BuyTicket();
+	}
+	else {
+		printf(" No hay ningun asiento reservado, porfavor reserve un asiento antes de realizar la compra.\n");
+	}
 	system("PAUSE");
 	system("cls");
 }

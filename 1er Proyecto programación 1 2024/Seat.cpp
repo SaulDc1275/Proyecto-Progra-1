@@ -11,3 +11,11 @@ void Seat::ShowSeat()
 {
 	printf(" [%c-%i \"%c\"] ", Row, Column, Disponibility);
 }
+
+void Seat::setDisponibility(char newDisponibility) {
+	Disponibility = newDisponibility;
+}
+
+char Seat::getDisponibility() {
+	return Disponibility;
+}

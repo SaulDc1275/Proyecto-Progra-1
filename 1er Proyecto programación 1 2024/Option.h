@@ -3,12 +3,13 @@
 #include <stdio.h>
 #include "Movie.h"
 #include "Mainteinance.h"
+#include "Ticket.h"
 class Option : public Mainteinance
 {
 
 private:
-	
 	bool roomsCreated;
+	bool reservation;
 	
 public:
 	Option();

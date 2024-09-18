@@ -9,5 +9,7 @@ private:
 public:
 	Seat(char Disponibility,char Row,int Column);
 	void ShowSeat();
+	void setDisponibility(char newDisponibility);
+	char getDisponibility();
 };
 

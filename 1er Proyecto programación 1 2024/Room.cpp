@@ -1,5 +1,5 @@
 #include "Room.h"
-int Room::TotalRooms = 1;
+
 
 Room::Room()
 {
@@ -11,13 +11,13 @@ Room::Room()
         Row++;
     }
 
-    RoomNumber = TotalRooms ++;
+    
 }
 
 
 Seat* Room::ShowRooms()
 {
-    ResetTotalRooms();
+    
     printf(" A continuacion la sala #%i \n", RoomNumber);
     
 
@@ -37,6 +37,48 @@ Seat* Room::ShowRooms()
     return nullptr;
 }
 
-void Room::ResetTotalRooms() {
-    TotalRooms = 1;
+void Room::setRoomNumber(int number)
+{
+    RoomNumber = number;
+}
+
+int Room::getRoomNumber() const {
+    return RoomNumber;
+}
+
+
+Seat* Room::getSeat(char row, int column) {
+    
+    int rowIndex = row - 'A';
+
+    
+    if (rowIndex >= 0 && rowIndex < Rows && column >= 1 && column <= Columns) {
+        return Seats[rowIndex][column - 1];
+    }
+    else {
+        printf(" Asiento invalido. Fila: %c, Columna: %d\n", row, column);
+        return nullptr;
+    }
+}
+
+void Room::ReserveSeat(char row, int column) {
+    Seat* seat = getSeat(row, column);
+    if (seat != nullptr) {
+        seat->setDisponibility('R');
+        printf(" El asiento %c-%d ha sido reservado.\n", row, column);
+    }
+    else {
+        printf(" No se pudo reservar el asiento %c-%d.\n", row, column);
+    }
+}
+
+void Room::OccupyReservedSeats() {
+    for (int i = 0; i < Rows; i++) {
+        for (int j = 0; j < Columns; j++) {
+            if (Seats[i][j]->getDisponibility() == 'R') {
+                Seats[i][j]->setDisponibility('O');
+                printf(" El asiento %c-%d ha sido ocupado.\n", 'A' + i, j + 1);
+            }
+        }
+    }
 }

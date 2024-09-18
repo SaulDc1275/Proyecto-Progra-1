@@ -1,9 +1,14 @@
 #include "Movie.h"
 
-const char* Movie::getName()
+Movie::Movie()
 {
+	ReadyToSell = false;
+}
+
+const char* Movie::getName() const {
 	return Name;
 }
+
 
 int Movie::getDuration()
 {
@@ -65,6 +70,23 @@ void Movie::setAssignedRoom(int nAssignedRoom)
 	AssignedRoom = nAssignedRoom;
 }
 
+int Movie::getAssigneedRoom()
+{
+	return AssignedRoom;
+}
+
 void Movie::AssignMovieSchedule(int day, int month, int year, int hour, int minute) {
 	MovieSchedule.AssignSchedule(day, month, year, hour, minute);
+}
+
+void Movie::SetReady()
+{
+	if (AssignedRoom > 0 && MovieSchedule.getMinute() > -1) {
+		ReadyToSell = true;
+	}
+}
+
+bool Movie::GetReady()
+{
+	return ReadyToSell;
 }

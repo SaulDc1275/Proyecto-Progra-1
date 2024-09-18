@@ -1,5 +1,5 @@
 #include "Schedule.h"
-#include <iostream>
+
 
 Schedule::Schedule() {
 	Day = -1;
@@ -34,4 +34,9 @@ void Schedule::ShowSchedule() {
 		}
 		printf(" En la fecha: %i/%i/%i\n", Day, Month, Year);
 	}
+}
+
+int Schedule::getMinute()
+{
+	return Minute;
 }

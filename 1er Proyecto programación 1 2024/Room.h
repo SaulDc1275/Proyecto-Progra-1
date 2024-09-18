@@ -7,10 +7,14 @@ private:
 	static const int Columns = 14;
 	Seat* Seats[Rows][Columns];
 	int RoomNumber;
-	static int TotalRooms;
+	
 public:
 	Room();
 	Seat* ShowRooms();
-	static void ResetTotalRooms();
+	void setRoomNumber(int number);
+	int getRoomNumber() const;
+	Seat* getSeat(char row, int column);
+	void ReserveSeat(char row, int column);
+	void OccupyReservedSeats();
 };
 

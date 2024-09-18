@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 class Schedule
 {
 private:
@@ -12,4 +13,5 @@ public:
     Schedule();
     void AssignSchedule(int day, int month, int year, int hour, int minute);
     void ShowSchedule();
+    int getMinute();
 };
